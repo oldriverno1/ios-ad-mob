@@ -19,23 +19,14 @@ public class IosNativeAdPlugin: CAPPlugin {
         let adsCount = call.getInt("adsCount") ?? 1
         let adsCountAdjusted = max(min(adsCount, 5), 1)
 
-        implementation.loadNativeAd(adId: adId, isTestAd: isTestAd, adsCount: adsCountAdjusted) { (error) in
+        implementation.loadNativeAd(adId: adId, isTestAd: isTestAd, adsCount: adsCountAdjusted) { (adsData, error) in
             if let error = error {
                 call.reject("Ad failed to load \(error.localizedDescription)")
-            } else {
+            } else if let adsData = adsData {
                 call.resolve(["ads": adsData])
+            } else {
+                call.reject("No ads data available")
             }
         }
     }
-
-    // Remove this part since it's not being used
-    //@objc func triggerNativeAd(_ call: CAPPluginCall) {
-    //    guard let id = call.getString("id") else {
-    //        call.reject("ID not provided")
-    //        return
-    //    }
-
-    //    implementation.triggerNativeAd(withId: id)
-    //    call.resolve()
-    //}
 }
