@@ -14,6 +14,9 @@ npx cap sync
 <docgen-index>
 
 * [`echo(...)`](#echo)
+* [`loadNativeAd(...)`](#loadnativead)
+* [`triggerNativeAd(...)`](#triggernativead)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -33,5 +36,59 @@ echo(options: { value: string; }) => Promise<{ value: string; }>
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
 --------------------
+
+
+### loadNativeAd(...)
+
+```typescript
+loadNativeAd(options: AdOptions) => Promise<NativeAdResult>
+```
+
+| Param         | Type                                            |
+| ------------- | ----------------------------------------------- |
+| **`options`** | <code><a href="#adoptions">AdOptions</a></code> |
+
+**Returns:** <code>Promise&lt;<a href="#nativeadresult">NativeAdResult</a>&gt;</code>
+
+--------------------
+
+
+### triggerNativeAd(...)
+
+```typescript
+triggerNativeAd(options: TriggerAdOptions) => Promise<void>
+```
+
+| Param         | Type                                                          |
+| ------------- | ------------------------------------------------------------- |
+| **`options`** | <code><a href="#triggeradoptions">TriggerAdOptions</a></code> |
+
+--------------------
+
+
+### Interfaces
+
+
+#### NativeAdResult
+
+| Prop      | Type               |
+| --------- | ------------------ |
+| **`ads`** | <code>any[]</code> |
+
+
+#### AdOptions
+
+| Prop            | Type                 |
+| --------------- | -------------------- |
+| **`adId`**      | <code>string</code>  |
+| **`isTesting`** | <code>boolean</code> |
+| **`adsCount`**  | <code>number</code>  |
+
+
+#### TriggerAdOptions
+
+| Prop     | Type                |
+| -------- | ------------------- |
+| **`id`** | <code>string</code> |
 
 </docgen-api>
